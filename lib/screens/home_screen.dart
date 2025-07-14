@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'lista_screen.dart';
 import 'tipoderegistro.dart';
+import 'preciosfinal.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,28 +9,55 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
-        title: const Text(
+        backgroundColor: Colors.white,
+        elevation: 0.5,
+        centerTitle: true,
+        title: Text(
           'GUARDA EQUIPAJES',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
             fontSize: 24,
-            letterSpacing: 1.5,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+            letterSpacing: 1.2,
           ),
         ),
-        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            const Icon(Icons.luggage, size: 80, color: Colors.blueAccent),
             const SizedBox(height: 30),
+            Center(
+              child: Icon(Icons.luggage, size: 90, color: Colors.blueAccent),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: Text(
+                'Bienvenido al Sistema de Equipajes',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Center(
+              child: Text(
+                'Selecciona una opción para comenzar',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey.shade600,
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
 
-            OutlinedButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -38,42 +66,93 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.add, color: Colors.blue),
+              icon: const Icon(Icons.add, size: 24, color: Colors.white),
               label: const Text(
-                'Registrar equipaje',
-                style: TextStyle(fontSize: 18, color: Colors.blue),
+                'Registrar Equipajes',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Colors.blue, width: 2),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blueAccent,
                 minimumSize: const Size(double.infinity, 60),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(14),
                 ),
+                elevation: 3,
               ),
             ),
-
             const SizedBox(height: 20),
 
-            OutlinedButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ListaScreen()),
                 );
               },
-              icon: const Icon(Icons.list_alt, color: Colors.green),
+              icon: const Icon(Icons.list_alt, size: 24, color: Colors.white),
               label: const Text(
-                'Ver lista de equipajes',
-                style: TextStyle(fontSize: 18, color: Colors.green),
+                'Ver Lista de Equipajes',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Colors.green, width: 2),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.green,
                 minimumSize: const Size(double.infinity, 60),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                elevation: 3,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PreciosFinal()),
+                );
+              },
+              icon: const Icon(Icons.attach_money, size: 24, color: Colors.white),
+              label: const Text(
+                'Ver Totales / Precios',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.orange,
+                minimumSize: const Size(double.infinity, 60),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                elevation: 3,
+              ),
+            ),
+            const SizedBox(height: 40),
+
+            Divider(thickness: 1),
+            const SizedBox(height: 10),
+            Center(
+              child: Text(
+                'Versión 1.0.0',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade500,
                 ),
               ),
             ),
+            const SizedBox(height: 20),
+            Center(
+              child: Text(
+                '© 2025 Guarda Equipajes',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade500,
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
           ],
         ),
       ),

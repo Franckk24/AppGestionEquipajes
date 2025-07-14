@@ -95,9 +95,13 @@ class _RegistroEncomiendaScreenState extends State<RegistroEncomiendaScreen> {
   InputDecoration inputDecoration(String label) {
     return InputDecoration(
       labelText: label,
-      border: const OutlineInputBorder(),
+      labelStyle: TextStyle(color: Colors.grey.shade700),
+      filled: true,
+      fillColor: Colors.grey.shade100,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.blue.shade700, width: 2),
+        borderRadius: BorderRadius.circular(12),
       ),
     );
   }
@@ -105,14 +109,20 @@ class _RegistroEncomiendaScreenState extends State<RegistroEncomiendaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
-        title: const Text(
-          'REGISTRO ENCOMIENDA',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
+        backgroundColor: Colors.white,
+        elevation: 0.5,
         centerTitle: true,
+        title: Text(
+          'REGISTRO ENCOMIENDAS',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+            letterSpacing: 1.2,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -120,6 +130,24 @@ class _RegistroEncomiendaScreenState extends State<RegistroEncomiendaScreen> {
           key: _formKey,
           child: ListView(
             children: [
+              const SizedBox(height: 10),
+              Center(
+                child: Icon(
+                  Icons.local_shipping,
+                  size: 80,
+                  color: Colors.orange.shade400,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Center(
+                child: Text(
+                  'Completa los datos para registrar la encomienda',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                ),
+              ),
+              const SizedBox(height: 20),
+
               TextFormField(
                 controller: nombreConductorController,
                 decoration: inputDecoration('Nombre del conductor'),
@@ -148,7 +176,7 @@ class _RegistroEncomiendaScreenState extends State<RegistroEncomiendaScreen> {
                     ? 'Campo obligatorio'
                     : null,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
 
               const Text(
                 'Cantidad de maletas:',
@@ -215,17 +243,35 @@ class _RegistroEncomiendaScreenState extends State<RegistroEncomiendaScreen> {
               ),
               const SizedBox(height: 30),
 
-              OutlinedButton.icon(
-                icon: const Icon(Icons.save, color: Colors.blue),
-                label: const Text(
-                  'Guardar registro',
-                  style: TextStyle(color: Colors.blue),
+              ElevatedButton.icon(
+                icon: Icon(Icons.save, color: Colors.white),
+                label: Text(
+                  'Guardar Registro',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                style: OutlinedButton.styleFrom(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
                   padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 onPressed: guardarRegistro,
               ),
+              const SizedBox(height: 20),
+              Divider(),
+              const SizedBox(height: 10),
+              Center(
+                child: Text(
+                  'Asegúrate que los valores sean correctos\nantes de guardar la encomienda.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
+                ),
+              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

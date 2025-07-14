@@ -8,28 +8,54 @@ class TipoRegistroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
-        title: const Text(
+        backgroundColor: Colors.white,
+        elevation: 0.5,
+        centerTitle: true,
+        title: Text(
           'TIPO DE REGISTRO',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24,
-            letterSpacing: 1.5,
+            color: Colors.black87,
+            letterSpacing: 1.2,
           ),
         ),
-        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            const Icon(Icons.assignment, size: 80, color: Colors.blueAccent),
             const SizedBox(height: 30),
+            Center(
+              child: Icon(Icons.assignment, size: 90, color: Colors.blueAccent),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: Text(
+                '¿Qué deseas registrar?',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Center(
+              child: Text(
+                'Selecciona el tipo de registro que quieres realizar',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey.shade600,
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
 
-            OutlinedButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -38,23 +64,27 @@ class TipoRegistroScreen extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.luggage, color: Colors.blue),
-              label: const Text(
-                'Registrar equipaje',
-                style: TextStyle(fontSize: 18, color: Colors.blue),
-              ),
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Colors.blue, width: 2),
-                minimumSize: const Size(double.infinity, 60),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+              icon: Icon(Icons.luggage, color: Colors.white, size: 24),
+              label: Text(
+                'Registrar Equipaje',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blueAccent,
+                minimumSize: const Size(double.infinity, 60),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                elevation: 3,
+              ),
             ),
-
             const SizedBox(height: 20),
 
-            OutlinedButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -63,19 +93,50 @@ class TipoRegistroScreen extends StatelessWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.local_shipping, color: Colors.orange),
-              label: const Text(
-                'Registrar encomienda',
-                style: TextStyle(fontSize: 18, color: Colors.orange),
+              icon: Icon(Icons.local_shipping, color: Colors.white, size: 24),
+              label: Text(
+                'Registrar Encomienda',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Colors.orange, width: 2),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.orange,
                 minimumSize: const Size(double.infinity, 60),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                elevation: 3,
+              ),
+            ),
+            const SizedBox(height: 40),
+
+            Divider(thickness: 1),
+            const SizedBox(height: 10),
+            Center(
+              child: Text(
+                'Puedes registrar tanto equipajes como encomiendas.\nRecuerda verificar los datos antes de guardar.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey.shade600,
+                  height: 1.4,
                 ),
               ),
             ),
+            const SizedBox(height: 30),
+            Center(
+              child: Text(
+                '© 2025 Guarda Equipajes',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade500,
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

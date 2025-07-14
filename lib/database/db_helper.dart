@@ -76,5 +76,41 @@ class DBHelper {
     return maps.map((map) => Encomienda.fromMap(map)).toList();
   }
 
+  static Future<Map<String, int>> obtenerTotalesDesglosados() async {
+    final registros = await obtenerRegistros();
+    final encomiendas = await obtenerEncomiendas();
+
+    int totalRegistros = 0;
+    int totalEncomiendas = 0;
+    int totalValorEncomienda = 0;
+    final now = DateTime.now();
+
+    for (var r in registros) {
+      final fechaIngreso = DateTime.parse(r.fechaIngreso);
+      final duracion = now.difference(fechaIngreso);
+      final bloques = (duracion.inHours / 12)
+          .ceil()
+          .clamp(1, double.infinity)
+          .toInt();
+      totalRegistros += bloques * r.maletas * r.precio;
+    }
+
+    for (var e in encomiendas) {
+      final fechaIngreso = DateTime.parse(e.fecha);
+      final duracion = now.difference(fechaIngreso);
+      final bloques = (duracion.inHours / 12).ceil().clamp(1, double.infinity).toInt();
+      totalEncomiendas += bloques * e.valorGuardado * e.maletas;
+
+      totalValorEncomienda += e.valorEncomienda;
+    }
+
+    return {
+      'totalRegistros': totalRegistros,
+      'totalEncomiendas': totalEncomiendas,
+      'totalGeneral': totalRegistros + totalEncomiendas,
+      'totalValorEncomienda': totalValorEncomienda,
+    };
+  }
+
   // (Opcional) eliminar registros, limpiar tablas, etc.
 }
