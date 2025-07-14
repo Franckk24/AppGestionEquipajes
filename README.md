@@ -1,16 +1,19 @@
-# flutter_application_1
+# 📦 Bus Luggage & Encomiendas Manager
 
-A new Flutter project.
+Aplicación desarrollada en **Flutter** para la **gestión de equipajes y encomiendas** en terminales o empresas de transporte.
 
-## Getting Started
+Permite registrar:
+- Pasajeros con sus maletas, fichas, identificación.
+- Encomiendas con valor declarado, valor por guardado, buseta y conductor.
+- Visualización de registros combinados con cálculo de costos según tiempo de almacenamiento.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Tecnologías Utilizadas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter 3.x**
+- **Dart**
+- **SQLite (con sqflite)**
+- **Intl para formateo de fechas**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
