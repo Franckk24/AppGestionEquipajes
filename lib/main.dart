@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // 🔥 ELIMINA la base de datos (solo durante desarrollo)
-  final dbPath = await getDatabasesPath();
-  final path = join(dbPath, 'equipaje.db');
-  await deleteDatabase(path); // <-- Esta línea elimina la base de datos
   runApp(const MyApp());
 }
 
